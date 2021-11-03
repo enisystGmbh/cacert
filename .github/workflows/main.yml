@@ -1,0 +1,22 @@
+name: Daily update of Mozilla CA certificate store
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download cacert file
+        run: curl --remote-name --time-cond cacert.pem https://curl.se/ca/cacert.pem
+      - name: Download cacert checksum file
+        run: curl --remote-name --time-cond cacert.pem.sha256 https://curl.se/ca/cacert.pem.sha256
+      - name: Check cacert file
+        run: sha256sum -c cacert.pem.sha256
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated update of Mozilla CA certificate store
+          branch: ${{ github.head_ref }}

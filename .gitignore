@@ -1,0 +1,11 @@
+/*
+!.github/
+.github/*
+!.github/workflows
+.github/workflows/*
+!.github/workflows/main.yml
+!.gitignore
+!LICENSE
+!README.md
+!cacert.pem
+!cacert.pem.sha256
