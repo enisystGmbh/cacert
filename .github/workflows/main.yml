@@ -2,6 +2,7 @@ name: Daily update of Mozilla CA certificate store
 
 on:
   push:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
 
