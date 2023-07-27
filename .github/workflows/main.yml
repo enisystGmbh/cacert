@@ -1,7 +1,6 @@
 name: Daily update of Mozilla CA certificate store
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
@@ -21,3 +20,4 @@ jobs:
         with:
           commit_message: Automated update of Mozilla CA certificate store
           branch: ${{ github.head_ref }}
+      - uses: gautamkrishnar/keepalive-workflow@v1
