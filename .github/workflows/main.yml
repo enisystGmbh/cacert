@@ -22,4 +22,10 @@ jobs:
         with:
           commit_message: Automated update of Mozilla CA certificate store
           branch: ${{ github.head_ref }}
-      - uses: gautamkrishnar/keepalive-workflow@v2
+  keepalive:
+      runs-on: ubuntu-latest
+      permissions:
+        actions: write
+      steps:
+        - uses: actions/checkout@v4
+        - uses: gautamkrishnar/keepalive-workflow@v2
